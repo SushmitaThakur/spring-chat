@@ -1,0 +1,258 @@
+{
+  "info": {
+    "_postman_id": "5a6bd3e4-5f90-430f-8036-4c60913fc9e3",
+    "name": "API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3686174"
+  },
+  "item": [
+    {
+      "name": "Get All Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/user/list",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "user",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create New User",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Emma Watson",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "ewatson@hello.com",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/user/create",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "user",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Groups",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/group/list",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "group",
+            "list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create New Group",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Hogwarts",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/group/create",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "group",
+            "create"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Join a Group",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "user_id",
+              "value": "5",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/group/join/:group_id",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "group",
+            "join",
+            ":group_id"
+          ],
+          "variable": [
+            {
+              "key": "group_id",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List All Group Messages",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "{{url}}/message/list/:group_id?user_id=1",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "message",
+            "list",
+            ":group_id"
+          ],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "1"
+            }
+          ],
+          "variable": [
+            {
+              "key": "group_id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Send Message in a Group",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "user_id",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "message",
+              "value": "Hey, I am Ryan",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/message/send/:group_id",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "message",
+            "send",
+            ":group_id"
+          ],
+          "variable": [
+            {
+              "key": "group_id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List All Unread Messages",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "{{url}}/message/unread/:group_id?user_id=4",
+          "host": [
+            "{{url}}"
+          ],
+          "path": [
+            "message",
+            "unread",
+            ":group_id"
+          ],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "4"
+            }
+          ],
+          "variable": [
+            {
+              "key": "group_id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

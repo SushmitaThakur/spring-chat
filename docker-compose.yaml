@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   backend:
-    image: openjdk:21-jdk
     container_name: spring-chat
     build:
       context: .
@@ -12,10 +11,16 @@ services:
     depends_on:
       - db
     environment:
+      JAVA_OPTS: -Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true
+      SPRING_PROFILES_ACTIVE: dev
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/chat_db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_DEVTOOLS_RESTART_ENABLED: true
+    volumes:
+#      - ./target:/app
+      - .:/app
     networks:
       - app-network
 
@@ -31,6 +36,11 @@ services:
       MYSQL_PASSWORD: password
     networks:
       - app-network
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
 
 networks:
   app-network:
